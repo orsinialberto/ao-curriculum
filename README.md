@@ -34,11 +34,20 @@ curriculum/
 
 ## Deploy su GitHub Pages
 
-1. Crea un repository su GitHub
-2. Carica i file del progetto
-3. Vai su Settings > Pages
-4. Seleziona il branch principale (main/master)
-5. Il sito sarà disponibile su `https://username.github.io/repository-name`
+Il repository è già configurato per GitHub Pages. Per pubblicare il sito:
+
+1. **Vai sul repository GitHub**: https://github.com/orsinialberto/curriculum
+2. **Apri le impostazioni**: Clicca su "Settings" nella barra superiore del repository
+3. **Vai alla sezione Pages**: Nel menu laterale sinistro, clicca su "Pages"
+4. **Configura la sorgente**:
+   - Sotto "Source", seleziona "Deploy from a branch"
+   - Scegli il branch: **main**
+   - Scegli la cartella: **/ (root)**
+   - Clicca su "Save"
+5. **Attendi la pubblicazione**: GitHub impiegherà qualche minuto per pubblicare il sito
+6. **Il tuo sito sarà disponibile su**: https://orsinialberto.github.io/curriculum/
+
+**Nota**: Il file `.nojekyll` è già presente nella root del progetto per assicurarsi che GitHub Pages serva correttamente i file statici senza processarli con Jekyll.
 
 ## Sviluppo Locale
 
