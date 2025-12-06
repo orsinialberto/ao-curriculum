@@ -22,7 +22,8 @@ const translations = {
         // Profile
         profile: {
             role: "Web Developer",
-            description: "Back-end Engineer con esperienza in Java e sviluppo di API REST. Contribuisco all'evoluzione tecnica del prodotto e supporto il team come Scrum Master in contesti Agile, favorendo qualità, collaborazione e miglioramento continuo.\n\nNegli ultimi mesi sto approfondendo le tecnologie legate all'AI: utilizzo di strumenti di sviluppo assistito (Cursor, Copilot), implementazione di server MCP, progettazione di sistemi RAG basati su database vettoriali, prompt engineering e integrazione con modelli linguistici tramite API LLM"
+            description: "Back-end Engineer con esperienza in Java e sviluppo di API REST. Contribuisco all'evoluzione tecnica del prodotto e supporto il team come Scrum Master in contesti Agile, favorendo qualità, collaborazione e miglioramento continuo.",
+            description2: "Negli ultimi mesi sto approfondendo le tecnologie legate all'AI: utilizzo di strumenti di sviluppo assistito (Cursor, Copilot), implementazione di server MCP, progettazione di sistemi RAG basati su database vettoriali, prompt engineering e integrazione con modelli linguistici tramite API LLM"
         },
         // Education
         education: {
@@ -171,7 +172,8 @@ const translations = {
         // Profile
         profile: {
             role: "Web Developer",
-            description: "Back-end Engineer with experience in Java and REST API development. I contribute to the technical evolution of the product and support the team as Scrum Master in Agile contexts, fostering quality, collaboration, and continuous improvement.\n\nIn recent months I have been exploring AI-related technologies: use of assisted development tools (Cursor, Copilot), implementation of MCP servers, design of RAG systems based on vector databases, prompt engineering and integration with language models via LLM APIs"
+            description: "Back-end Engineer with experience in Java and REST API development. I contribute to the technical evolution of the product and support the team as Scrum Master in Agile contexts, fostering quality, collaboration, and continuous improvement.",
+            description2: "In recent months I have been exploring AI-related technologies: use of assisted development tools (Cursor, Copilot), implementation of MCP servers, design of RAG systems based on vector databases, prompt engineering and integration with language models via LLM APIs"
         },
         // Education
         education: {
