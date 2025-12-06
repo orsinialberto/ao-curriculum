@@ -34,20 +34,21 @@ curriculum/
 
 ## Deploy su GitHub Pages
 
-Il repository è già configurato per GitHub Pages. Per pubblicare il sito:
+Il repository è configurato con GitHub Actions per il deploy automatico. Per pubblicare il sito:
 
-1. **Vai sul repository GitHub**: https://github.com/orsinialberto/curriculum
+1. **Vai sul repository GitHub**: https://github.com/orsinialberto/ao-curriculum (o il tuo repository)
 2. **Apri le impostazioni**: Clicca su "Settings" nella barra superiore del repository
 3. **Vai alla sezione Pages**: Nel menu laterale sinistro, clicca su "Pages"
 4. **Configura la sorgente**:
-   - Sotto "Source", seleziona "Deploy from a branch"
-   - Scegli il branch: **main**
-   - Scegli la cartella: **/ (root)**
-   - Clicca su "Save"
-5. **Attendi la pubblicazione**: GitHub impiegherà qualche minuto per pubblicare il sito
-6. **Il tuo sito sarà disponibile su**: https://orsinialberto.github.io/curriculum/
+   - Sotto "Source", seleziona **"GitHub Actions"**
+   - Se non vedi questa opzione, assicurati che il workflow `.github/workflows/deploy.yml` sia presente nel repository
+5. **Il deploy avverrà automaticamente**: Ogni volta che fai push sul branch `main`, il workflow si attiverà automaticamente
+6. **Monitora il deploy**: Puoi vedere lo stato del deploy nella tab "Actions" del repository
+7. **Il tuo sito sarà disponibile su**: `https://orsinialberto.github.io/[nome-repository]/`
 
-**Nota**: Il file `.nojekyll` è già presente nella root del progetto per assicurarsi che GitHub Pages serva correttamente i file statici senza processarli con Jekyll.
+**Nota**: 
+- Il file `.nojekyll` è già presente nella root del progetto per assicurarsi che GitHub Pages serva correttamente i file statici senza processarli con Jekyll.
+- Il workflow GitHub Actions è configurato in `.github/workflows/deploy.yml` e si attiva automaticamente ad ogni push sul branch `main`.
 
 ## Sviluppo Locale
 
