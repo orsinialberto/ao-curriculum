@@ -35,7 +35,7 @@ const translations = {
             email: "Email",
             phone: "Phone",
             address: "Indirizzo",
-            downloadCv: "Curriculum Vitae",
+            downloadCv: "Download CV",
             copyright: "© 2025 Alberto Orsini. Tutti i diritti riservati.",
             addressValue: "Via privata Casentino, 6, Milano (MI), 20159"
         },
@@ -184,7 +184,7 @@ const translations = {
             email: "Email",
             phone: "Phone",
             address: "Address",
-            downloadCv: "Curriculum Vitae",
+            downloadCv: "Download CV",
             copyright: "© 2025 Alberto Orsini. All rights reserved.",
             addressValue: "Via privata Casentino, 6, Milano (MI), 20159"
         },

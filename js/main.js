@@ -870,8 +870,13 @@ function downloadPDF() {
     const downloadBtn = document.getElementById('download-pdf');
     if (!downloadBtn) return;
     
-    // Apri il PDF in una nuova finestra
-    window.open('Curriculum.pdf', '_blank');
+    // Determina il file PDF in base alla lingua corrente
+    const pdfFile = currentLanguage === 'it' 
+        ? 'cv-alberto-orsini-it.pdf' 
+        : 'cv-alberto-orsini-en.pdf';
+    
+    // Apri il PDF in una nuova finestra/tab
+    window.open(pdfFile, '_blank');
 }
 
 // Aggiungi event listener al pulsante di download
