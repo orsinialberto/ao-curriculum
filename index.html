@@ -22,6 +22,26 @@
     <meta property="twitter:image" content="https://orsinialberto.github.io/curriculum/images/og-image.jpg">
     
     <title>Alberto Orsini - Software Developer | Back-end Engineer</title>
+    <script>
+        // Fix per percorsi su GitHub Pages
+        (function() {
+            const isGitHubPages = window.location.hostname === 'orsinialberto.github.io' || 
+                                  window.location.hostname.includes('github.io');
+            const repoName = 'curriculum';
+            const path = window.location.pathname;
+            
+            if (isGitHubPages) {
+                // Se il path contiene già il nome del repository, aggiungiamo il base
+                if (path.includes('/' + repoName + '/') || path.startsWith('/' + repoName)) {
+                    const base = document.createElement('base');
+                    base.href = '/' + repoName + '/';
+                    document.head.insertBefore(base, document.head.firstChild);
+                }
+                // Se siamo alla root (path === '/' o path === ''), i percorsi relativi dovrebbero funzionare
+                // quindi non aggiungiamo il base
+            }
+        })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Megrim&family=Poiret+One&display=swap" rel="stylesheet">
