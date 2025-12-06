@@ -21,6 +21,17 @@
 
 html {
     scroll-behavior: smooth;
+    /* Nascondi scrollbar ma mantieni lo scroll verticale */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE e Edge */
+    /* Blocca completamente lo scroll orizzontale */
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+}
+
+html::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
 body {
@@ -32,12 +43,26 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     font-size: 16px;
+    /* Nascondi scrollbar ma mantieni lo scroll verticale */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE e Edge */
+    /* Blocca completamente lo scroll orizzontale */
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    position: relative;
+}
+
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
 .container {
     max-width: 900px;
     margin: 0 auto;
     padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Navigation */
