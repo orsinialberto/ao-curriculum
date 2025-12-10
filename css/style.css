@@ -1204,8 +1204,46 @@ html {
         font-size: 1rem;
     }
     
+    /* Language selector centrato nell'header su mobile */
+    .nav-container {
+        position: relative;
+        justify-content: space-between;
+    }
+    
+    /* Bilanciamento logo e hamburger per simmetria */
+    .nav-logo {
+        flex: 0 0 auto;
+        width: 60px;
+        display: flex;
+        justify-content: flex-start;
+    }
+    
+    .nav-logo-img {
+        height: 3rem;
+        width: auto;
+    }
+    
+    .nav-toggle {
+        flex: 0 0 auto;
+        width: 60px;
+        display: flex;
+        justify-content: flex-end;
+    }
+    
     .language-selector {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
         gap: 0.3rem;
+        margin-top: 0;
+        padding-top: 0;
+    }
+    
+    /* Language selector nel menu mobile (quando aperto) */
+    .nav-menu .language-selector {
+        position: static;
+        left: auto;
+        transform: none;
         margin-top: auto;
         padding-top: 2rem;
     }
