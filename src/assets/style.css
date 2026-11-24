@@ -110,7 +110,7 @@ h1 span{display:block;color:var(--acc);text-shadow:6px 6px 0 var(--ink)}
 .co{color:var(--acc);margin-bottom:1rem}
 .pn ul{list-style:none;padding:0;display:grid;gap:.4rem}.pn ul li::before{content:"→ ";color:var(--acc)}
 
-.st{display:flex;flex-wrap:wrap;gap:1.4rem}
+.st{display:flex;flex-wrap:wrap;gap:1.4rem;align-items:flex-start}
 .st>div{flex:1 1 18rem;background:var(--white);color:var(--ink);border:3px solid var(--ink);box-shadow:var(--shadow);padding:1.2rem}
 .st>div:nth-child(2n){transform:rotate(-.8deg)}.st>div:nth-child(3n){transform:rotate(.7deg)}
 .st .hi{background:var(--acc);flex-basis:100%;transform:none}
@@ -124,15 +124,20 @@ h1 span{display:block;color:var(--acc);text-shadow:6px 6px 0 var(--ink)}
 .cl{font:700 1.2rem var(--font-mono);max-width:28rem}
 .mail{display:inline-block;margin:1.2rem 0 1.5rem;font:800 clamp(1.4rem,4vw,3.4rem)/1 var(--font-display);letter-spacing:-.03em;border-bottom:5px solid var(--ink)}
 .mail:hover{background:var(--ink);color:var(--acc)}
-.ftr{background:var(--deep);padding:1.6rem var(--pad);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--soft-d)}.ftr a:hover{color:var(--acc)}
+.ftr{background:var(--deep);padding:1rem var(--pad);align-items:center;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--soft-d)}.ftr a:hover{color:var(--acc)}
 
 @media (max-width:991px){
   html{scroll-padding-top:8rem}.hdr{flex-wrap:wrap;gap:.4rem 1.2rem}.nav{order:3;flex:1 0 100%;margin:0;gap:1.2rem;overflow-x:auto;padding:.3rem 0}.lang{margin-left:auto}.hero{padding-top:10rem}.cols{grid-template-columns:1fr;gap:1.5rem}.cards{grid-template-columns:1fr}.card:nth-child(n){margin-top:0}
   .hero__b{grid-template-columns:1fr}.lead,.meta{grid-column:1}
-  .panels{flex-direction:column;height:auto}.pn,.pn:hover,.pn:focus,.pn:first-child{flex:none;background:transparent;border-right:0;border-bottom:3px solid var(--acc)}.pn:last-child{border-bottom:0}
-  .pn__b,.pn:first-child .pn__b{opacity:1!important;transform:none;width:auto;position:static!important}.panels:hover .pn:first-child:not(:hover){background:transparent}
+}
+/* Pannelli esperienza impilati e tutti aperti: schermi stretti e dispositivi touch (la fisarmonica dipende dall'hover; su iPad Pro 13" verticale i pannelli chiusi spezzavano i titoli) */
+@media (max-width:991px),(hover:none) and (pointer:coarse){
+  .panels{flex-direction:column;height:auto;min-height:0}.pn,.pn:hover,.pn:focus,.pn:focus-within,.pn:first-child,.panels:hover .pn:first-child:not(:hover),.panels:focus-within .pn:first-child:not(:focus-within){flex:none;background:transparent;border-right:0;border-bottom:3px solid var(--acc)}.pn:last-child{border-bottom:0}
+  .pn__b,.pn:first-child .pn__b,.panels:hover .pn:first-child:not(:hover) .pn__b,.panels:focus-within .pn:first-child:not(:focus-within) .pn__b{opacity:1!important;transform:none;width:auto;position:static!important}
 }
 @media (max-width:600px){.about__g{grid-template-columns:1fr;gap:2.5rem}.pic{max-width:14rem}.hdr .btn{display:none}.hero{padding-top:19rem}.badge{top:7.5rem;left:var(--pad);right:auto;width:6.5rem}.ghost{top:6rem;transform:translate(25%,0);font-size:15rem}h1 span{text-shadow:3px 3px 0 var(--ink)}.band span{font-size:1.5rem}}
+/* Tablet in verticale: la hero alta quanto lo schermo lasciava un grande vuoto sotto l'header; il contenuto parte subito sotto il badge */
+@media (orientation:portrait) and (min-width:601px){.hero{min-height:0;padding-top:25rem}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 
 /* Pagine interne */
@@ -151,6 +156,11 @@ h1 span{display:block;color:var(--acc);text-shadow:6px 6px 0 var(--ink)}
 .nf{min-height:100svh;padding:9rem var(--pad) 4rem;max-width:1440px;margin:auto}
 .nf h1{font:800 clamp(3.2rem,10vw,9rem)/.88 var(--font-display);letter-spacing:-.05em;margin:.5rem 0 0;max-width:12ch}
 .nf .cta{margin-top:2rem}.nf__en{margin-top:4rem;padding-top:2rem;border-top:3px solid var(--ink)}.nf__en .intro{margin-top:0}
+
+/* Aree di tocco: link piccoli portati a circa 44px di altezza senza cambiare l'aspetto */
+.nav a,.ftr a{display:inline-block;padding:.85rem 0}
+.logo,.lang a{position:relative}.logo::after,.lang a::after{content:"";position:absolute;inset:-.7rem -.3rem}
+@media (max-width:991px){.nav{padding:0}.hdr{row-gap:0}}
 
 /* Focus: contrasto >= 3:1 su ogni fondo (WCAG 1.4.11) */
 .contact :focus-visible,.card--y :focus-visible,.job:first-child :focus-visible,.st .hi :focus-visible,.band :focus-visible{outline-color:var(--ink)}
