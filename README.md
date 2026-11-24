@@ -6,7 +6,7 @@ Portfolio e curriculum di Alberto Orsini, software developer e Scrum Master. Sit
 
 ```
 src/
-  pages.mjs          pagine (home, esperienza, 404) in IT/EN
+  pages.mjs          pagine (home, esperienza, progetti, 404) in IT/EN
   data.mjs           testi e dati del sito
   assets/style.css   stile (palette selezionabili via data-palette)
   assets/main.js     selettore della palette e link al CV

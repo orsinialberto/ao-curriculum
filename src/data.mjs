@@ -47,6 +47,13 @@ export const content = {
       intro: 'Dal 2016 lavoro sul back-end di piattaforme in produzione, in Java. Dal 2017 sviluppo la Customer Data Platform di Contactlab: in consulenza fino al 2022, da allora come dipendente.',
       eduH2: 'Formazione',
     },
+    projPage: {
+      title: 'Progetti · Alberto Orsini, software developer e Scrum Master',
+      desc: 'Progetti di Alberto Orsini, software developer: sistema RAG con Google Gemini, agente AI, blog di viaggio in Next.js. Codice su GitHub.',
+      h1: 'Progetti',
+      intro: 'Tre progetti pubblici su GitHub: un sistema RAG, un agente AI e un blog di viaggio in Next.js.',
+      more: 'Altri repository sono su GitHub.',
+    },
     nf: { title: 'Pagina non trovata', text: "L'indirizzo non esiste o è stato spostato.", home: 'Torna alla home' },
     jobs: [
       {
@@ -136,6 +143,13 @@ export const content = {
       h1: 'Experience and education',
       intro: 'Since 2016 I have worked on the back end of production platforms, in Java. Since 2017 I have been developing the Contactlab Customer Data Platform: as a consultant until 2022, as an employee since then.',
       eduH2: 'Education',
+    },
+    projPage: {
+      title: 'Projects · Alberto Orsini, software developer and Scrum Master',
+      desc: "Projects by Alberto Orsini, software developer: a RAG system with Google Gemini, an AI agent, a Next.js travel blog. Code on GitHub.",
+      h1: 'Projects',
+      intro: 'Three public GitHub projects: a RAG system, an AI agent and a Next.js travel blog.',
+      more: 'More repositories are on GitHub.',
     },
     nf: { title: 'Page not found', text: 'This address does not exist or has moved.', home: 'Back to home' },
     jobs: [

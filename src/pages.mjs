@@ -5,8 +5,8 @@ import images from './image-manifest.json' with { type: 'json' };
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 const paths = {
-  it: { home: '/', exp: '/esperienza/' },
-  en: { home: '/en/', exp: '/en/experience/' },
+  it: { home: '/', exp: '/esperienza/', proj: '/progetti/' },
+  en: { home: '/en/', exp: '/en/experience/', proj: '/en/projects/' },
 };
 const other = { it: 'en', en: 'it' };
 
@@ -34,7 +34,7 @@ function layout({ lang, key, title, desc, body, jsonld }) {
   const path = p[key];
   const alt = paths[other[lang]][key];
   const url = SITE_URL + path;
-  const nav = [['exp', t.nav.exp, p.exp], ['sk', t.nav.skills, p.home + '#competenze'], ['proj', t.nav.proj, p.home + '#progetti'], ['ct', t.nav.contact, '#contatti']];
+  const nav = [['exp', t.nav.exp, p.exp], ['sk', t.nav.skills, p.home + '#competenze'], ['proj', t.nav.proj, p.proj], ['ct', t.nav.contact, '#contatti']];
   const navHtml = nav.map(([k, label, href]) => `<a href="${href}"${k === key ? ' aria-current="page"' : ''}>${esc(label)}</a>`).join('');
   const itH = SITE_URL + paths.it[key], enH = SITE_URL + paths.en[key];
   return `<!doctype html>
@@ -139,7 +139,7 @@ function home(lang) {
   <p class="role">${esc(h.role)}</p>
   <div class="hero__b">
     <p class="lead">${esc(h.lead)}</p>
-    <div class="cta"><a class="btn btn--y" href="#progetti">${esc(t.cta.projects)}</a><a class="btn btn--w" href="${t.cvHref}" download>${esc(t.cta.cv)}</a></div>
+    <div class="cta"><a class="btn btn--y" href="${p.proj}">${esc(t.cta.projects)}</a><a class="btn btn--w" href="${t.cvHref}" download>${esc(t.cta.cv)}</a></div>
     <p class="mono meta">${esc(h.meta)}</p>
   </div>
 </section>
@@ -211,6 +211,22 @@ function experience(lang) {
   return layout({ lang, key: 'exp', title: e.title, desc: e.desc, body });
 }
 
+function projects(lang) {
+  const t = content[lang], e = t.projPage;
+  const body = `<header class="ph">
+  <h1>${esc(e.h1)}</h1>
+  <p class="intro">${esc(e.intro)}</p>
+</header>
+<section class="wrap work" aria-label="${esc(e.h1)}">
+  <div class="cards">
+    ${t.projects.map((pr, i) => projectCard(lang, pr, i, 'h2')).join('\n    ')}
+  </div>
+  <p class="more"><a class="lnk lnk--big" href="${GITHUB}" rel="noopener">${esc(e.more)} ↗</a></p>
+  <div class="cta cta--page"><a class="btn btn--y" href="${mail}">${esc(t.cta.mail)}</a></div>
+</section>`;
+  return layout({ lang, key: 'proj', title: e.title, desc: e.desc, body });
+}
+
 function notFound() {
   const it = content.it.nf, en = content.en.nf;
   return `<!doctype html>
@@ -250,6 +266,7 @@ export const pages = [
   ...['it', 'en'].flatMap((lang) => [
     { path: paths[lang].home, lang, key: 'home', html: home(lang) },
     { path: paths[lang].exp, lang, key: 'exp', html: experience(lang) },
+    { path: paths[lang].proj, lang, key: 'proj', html: projects(lang) },
   ]),
   { path: '/404', file: '404.html', noindex: true, html: notFound() },
 ];
