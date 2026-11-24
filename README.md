@@ -1,66 +1,36 @@
-# Curriculum Web
+# curriculum.albertorsini.it
 
-Curriculum vitae interattivo sviluppato come pagina web statica.
-
-## Caratteristiche
-
-- Design minimale e moderno con tema scuro
-- Layout lineare e pulito
-- Responsive design
-- Navigazione smooth scroll
-- Sezioni: Profilo, Esperienze, Formazione, Competenze, Contatti
+Portfolio e curriculum di Alberto Orsini, software developer e Scrum Master. Sito statico in italiano e inglese, senza framework.
 
 ## Struttura
 
 ```
-curriculum/
-├── index.html          # Pagina principale
-├── css/
-│   └── style.css      # Stili dark theme
-├── js/
-│   └── main.js        # Script per navigazione
-└── README.md
+src/
+  pages.mjs          pagine (home, esperienza, progetti, 404) in IT/EN
+  data.mjs           testi e dati del sito
+  assets/style.css   stile (palette selezionabili via data-palette)
+  assets/main.js     selettore della palette e link al CV
+  cv/                contenuto e stile del CV in PDF
+public/              font, immagini, favicon, PDF del CV (copiati così come sono)
+scripts/             build, controlli, anteprima, immagini, CV
 ```
 
-## Personalizzazione
+## Comandi
 
-1. Modifica `index.html` con i tuoi dati personali
-2. Aggiorna i placeholder nelle sezioni:
-   - Header: nome, ruolo, contatti
-   - Profilo: testo introduttivo
-   - Esperienze: ruoli e descrizioni
-   - Formazione: titoli di studio
-   - Competenze: tecnologie e tools
+| Comando | Cosa fa |
+|---|---|
+| `npm run preview` | genera il sito in `dist/` e lo serve su http://localhost:4173 (`-- 4174` per un'altra porta) |
+| `npm run build` | genera il sito in `dist/` |
+| `npm run check` | build + controlli (link, immagini, lingue, meta) |
+| `npm run images` | rigenera le immagini WebP (le foto originali sono nel progetto di lavoro, non in questo repository) |
+| `npm run cv` | rigenera i PDF del CV (IT/EN × palette) con Chrome; percorso di Chrome da `CHROME_PATH` |
 
-## Deploy su GitHub Pages
+La build richiede solo Node 22 o successivo; `sharp` (dipendenza di sviluppo) serve solo a `npm run images`.
 
-Il repository è configurato con GitHub Actions per il deploy automatico. Per pubblicare il sito:
+## Pubblicazione
 
-1. **Vai sul repository GitHub**: https://github.com/orsinialberto/ao-curriculum (o il tuo repository)
-2. **Apri le impostazioni**: Clicca su "Settings" nella barra superiore del repository
-3. **Vai alla sezione Pages**: Nel menu laterale sinistro, clicca su "Pages"
-4. **Configura la sorgente**:
-   - Sotto "Source", seleziona **"GitHub Actions"**
-   - Se non vedi questa opzione, assicurati che il workflow `.github/workflows/deploy.yml` sia presente nel repository
-5. **Il deploy avverrà automaticamente**: Ogni volta che fai push sul branch `main`, il workflow si attiverà automaticamente
-6. **Monitora il deploy**: Puoi vedere lo stato del deploy nella tab "Actions" del repository
-7. **Il tuo sito sarà disponibile su**: `https://orsinialberto.github.io/[nome-repository]/`
+Ogni push su `main` avvia `.github/workflows/deploy.yml`, che esegue `npm run check` e pubblica `dist/` su GitHub Pages
+(dominio `curriculum.albertorsini.it`, impostato nei Settings → Pages del repository).
+I PDF del CV vanno rigenerati in locale (`npm run cv`) e committati prima del push.
 
-**Nota**: 
-- Il file `.nojekyll` è già presente nella root del progetto per assicurarsi che GitHub Pages serva correttamente i file statici senza processarli con Jekyll.
-- Il workflow GitHub Actions è configurato in `.github/workflows/deploy.yml` e si attiva automaticamente ad ogni push sul branch `main`.
-
-## Sviluppo Locale
-
-Apri semplicemente `index.html` nel browser o usa un server locale:
-
-```bash
-# Con Python
-python -m http.server 8000
-
-# Con Node.js (http-server)
-npx http-server
-```
-
-Poi apri `http://localhost:8000` nel browser.
-
+Il sito precedente è conservato nel tag `sito-v1`.

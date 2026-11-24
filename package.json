@@ -1,0 +1,18 @@
+{
+  "name": "ao-portfolio-site",
+  "private": true,
+  "type": "module",
+  "description": "Portfolio statico di Alberto Orsini (build senza framework, IT con toggle EN)",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "images": "node scripts/images.mjs",
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/build.mjs && node scripts/check.mjs",
+    "preview": "node scripts/build.mjs && node scripts/preview.mjs",
+    "cv": "node scripts/cv.mjs",
+    "sync-repo": "node scripts/sync-repo.mjs"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.0"
+  }
+}
