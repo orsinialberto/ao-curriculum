@@ -5,8 +5,8 @@ import images from './image-manifest.json' with { type: 'json' };
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 const paths = {
-  it: { home: '/', exp: '/esperienza/', proj: '/progetti/' },
-  en: { home: '/en/', exp: '/en/experience/', proj: '/en/projects/' },
+  it: { home: '/', exp: '/esperienza/' },
+  en: { home: '/en/', exp: '/en/experience/' },
 };
 const other = { it: 'en', en: 'it' };
 
@@ -211,22 +211,6 @@ function experience(lang) {
   return layout({ lang, key: 'exp', title: e.title, desc: e.desc, body });
 }
 
-function projects(lang) {
-  const t = content[lang], e = t.projPage;
-  const body = `<header class="ph">
-  <h1>${esc(e.h1)}</h1>
-  <p class="intro">${esc(e.intro)}</p>
-</header>
-<section class="wrap work" aria-label="${esc(e.h1)}">
-  <div class="cards">
-    ${t.projects.map((pr, i) => projectCard(lang, pr, i, 'h2')).join('\n    ')}
-  </div>
-  <p class="more"><a class="lnk lnk--big" href="${GITHUB}" rel="noopener">${esc(e.more)} ↗</a></p>
-  <div class="cta cta--page"><a class="btn btn--y" href="${mail}">${esc(t.cta.mail)}</a></div>
-</section>`;
-  return layout({ lang, key: 'proj', title: e.title, desc: e.desc, body });
-}
-
 function notFound() {
   const it = content.it.nf, en = content.en.nf;
   return `<!doctype html>
@@ -266,7 +250,6 @@ export const pages = [
   ...['it', 'en'].flatMap((lang) => [
     { path: paths[lang].home, lang, key: 'home', html: home(lang) },
     { path: paths[lang].exp, lang, key: 'exp', html: experience(lang) },
-    { path: paths[lang].proj, lang, key: 'proj', html: projects(lang) },
   ]),
   { path: '/404', file: '404.html', noindex: true, html: notFound() },
 ];
