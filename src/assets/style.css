@@ -135,9 +135,9 @@ h1 span{display:block;color:var(--acc);text-shadow:6px 6px 0 var(--ink)}
   .panels{flex-direction:column;height:auto;min-height:0}.pn,.pn:hover,.pn:focus,.pn:focus-within,.pn:first-child,.panels:hover .pn:first-child:not(:hover),.panels:focus-within .pn:first-child:not(:focus-within){flex:none;background:transparent;border-right:0;border-bottom:3px solid var(--acc)}.pn:last-child{border-bottom:0}
   .pn__b,.pn:first-child .pn__b,.panels:hover .pn:first-child:not(:hover) .pn__b,.panels:focus-within .pn:first-child:not(:focus-within) .pn__b{opacity:1!important;transform:none;width:auto;position:static!important}
 }
-@media (max-width:600px){.about__g{grid-template-columns:1fr;gap:2.5rem}.pic{max-width:14rem}.hdr .btn{display:none}.hero{padding-top:19rem}.badge{top:7.5rem;left:var(--pad);right:auto;width:6.5rem}.ghost{top:6rem;transform:translate(25%,0);font-size:15rem}h1 span{text-shadow:3px 3px 0 var(--ink)}.band span{font-size:1.5rem}}
+@media (max-width:600px){.about__g{grid-template-columns:1fr;gap:2.5rem}.pic{max-width:14rem}.hdr .btn{display:none}.hero{padding-top:14.5rem;min-height:0}.badge{top:13.5rem;right:var(--pad);width:5.5rem}.ghost{top:12.5rem;transform:translate(52%,0);font-size:15rem}h1 span{text-shadow:3px 3px 0 var(--ink)}.band span{font-size:1.5rem}}
 /* Tablet in verticale: la hero alta quanto lo schermo lasciava un grande vuoto sotto l'header; il contenuto parte subito sotto il badge */
-@media (orientation:portrait) and (min-width:601px){.hero{min-height:0;padding-top:25rem}}
+@media (orientation:portrait) and (min-width:601px){.hero{min-height:0;padding-top:22rem}.badge{top:11.5rem}.ghost{top:calc(50% + 1.5rem);transform:translate(25%,-50%)}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 
 /* Pagine interne */
