@@ -1,3 +1,12 @@
+// Voce "Home" quando si è già nella home: si risale in cima senza ricaricare la pagina.
+document.querySelector('a[data-home]')?.addEventListener('click', (e) => {
+  const link = e.currentTarget;
+  if (link.pathname !== location.pathname || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  e.preventDefault();
+  if (location.hash) history.replaceState(null, '', location.pathname);
+  scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+});
+
 // Selettore della palette: pallino con la palette attiva che apre un menu di scelta.
 // La palette salvata viene applicata prima del disegno da uno script inline in <head> (vedi pages.mjs).
 (() => {

@@ -226,3 +226,5 @@ h1 span{display:block;color:var(--acc);text-shadow:6px 6px 0 var(--ink)}
 /* Cambio palette: la pagina nuova entra in dissolvenza sopra la vecchia */
 .pal-vt::view-transition-old(root),.pal-vt::view-transition-old(hdr){animation:none}
 .pal-vt::view-transition-new(root),.pal-vt::view-transition-new(hdr){animation:250ms var(--ease) both fade-in}
+/* con la voce Home il menu deve stare intero anche sui telefoni */
+@media (max-width:600px){.hdr .nav{gap:.6rem}.hdr .nav a{font-size:.75rem}}

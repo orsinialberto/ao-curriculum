@@ -28,14 +28,17 @@ const paletteSwitch = (label) => `<div class="pal" hidden><button type="button" 
 const mail = `mailto:${EMAIL}`;
 const stack = (s) => `<p class="mono stack">${esc(s)}</p>`;
 
+// Il logo porta all'ingresso comune dei siti, nella lingua della pagina.
+const hubUrl = (lang) => (lang === 'en' ? 'https://albertorsini.it/en/' : 'https://albertorsini.it/');
+
 function layout({ lang, key, title, desc, body, jsonld }) {
   const t = content[lang];
   const p = paths[lang];
   const path = p[key];
   const alt = paths[other[lang]][key];
   const url = SITE_URL + path;
-  const nav = [['exp', t.nav.exp, p.exp], ['sk', t.nav.skills, p.home + '#competenze'], ['proj', t.nav.proj, p.proj], ['ct', t.nav.contact, '#contatti']];
-  const navHtml = nav.map(([k, label, href]) => `<a href="${href}"${k === key ? ' aria-current="page"' : ''}>${esc(label)}</a>`).join('');
+  const nav = [['home', t.nav.home, p.home], ['exp', t.nav.exp, p.exp], ['sk', t.nav.skills, p.home + '#competenze'], ['proj', t.nav.proj, p.proj], ['ct', t.nav.contact, '#contatti']];
+  const navHtml = nav.map(([k, label, href]) => `<a href="${href}"${k === 'home' ? ' data-home' : ''}${k === key ? ' aria-current="page"' : ''}>${esc(label)}</a>`).join('');
   const itH = SITE_URL + paths.it[key], enH = SITE_URL + paths.en[key];
   return `<!doctype html>
 <html lang="${lang}">
@@ -71,7 +74,7 @@ ${key === 'home' ? `<script>try{if(!sessionStorage.getItem('ao-intro')){document
 <body>
 <a class="skip" href="#main">${esc(t.skip)}</a>
 <header class="hdr">
-  <a class="logo" href="${p.home}" aria-label="Alberto Orsini, ${esc(t.nav.home)}">A.O</a>
+  <a class="logo" href="${hubUrl(lang)}" aria-label="Alberto Orsini, hub">A.O</a>
   <nav class="nav" aria-label="${esc(t.nav.label)}">${navHtml}</nav>
   <div class="lang" role="group" aria-label="${esc(t.langLabel)}"><a href="${paths.it[key]}" hreflang="it" lang="it"${lang === 'it' ? ' aria-current="true"' : ''}>IT</a><span aria-hidden="true">/</span><a href="${paths.en[key]}" hreflang="en" lang="en"${lang === 'en' ? ' aria-current="true"' : ''}>EN</a></div>
   ${paletteSwitch(t.paletteLabel)}
@@ -246,7 +249,7 @@ ${paletteBoot}
 </head>
 <body>
 <a class="skip" href="#main">${esc(content.it.skip)}</a>
-<header class="hdr"><a class="logo" href="/" aria-label="Alberto Orsini, home">A.O</a></header>
+<header class="hdr"><a class="logo" href="${hubUrl('it')}" aria-label="Alberto Orsini, hub">A.O</a></header>
 <main id="main" class="nf">
   <p class="mono tag">404</p>
   <h1>${esc(it.title)}</h1>

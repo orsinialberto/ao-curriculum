@@ -43,6 +43,14 @@ for (const file of htmlFiles) {
     }
   }
   if (/DA CONFERMARE|lorem ipsum|\bTODO\b/i.test(h)) err(rel, 'testo segnaposto presente');
+  // il logo porta all'hub nella lingua della pagina; la voce Home resta nel curriculum
+  const english = /<html lang="en"/.test(h);
+  const logo = h.match(/<a class="logo" href="([^"]+)"/)?.[1];
+  if (logo !== (english ? 'https://albertorsini.it/en/' : 'https://albertorsini.it/')) err(rel, `il logo non porta all'hub (${logo})`);
+  if (rel !== '404.html') {
+    const first = h.match(/<nav class="nav"[^>]*>(<a [^>]*>)/)?.[1] ?? '';
+    if (!first.includes(`href="${english ? '/en/' : '/'}"`) || !first.includes('data-home')) err(rel, `la prima voce del menu non è Home (${first})`);
+  }
 }
 for (const f of ['sitemap.xml', 'robots.txt', 'favicon.svg', '404.html']) if (!fs.existsSync(path.join(dist, f))) err(f, 'file mancante');
 
